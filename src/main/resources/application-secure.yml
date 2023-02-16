@@ -1,0 +1,4 @@
+spring:
+  security:
+    token:
+      jwt.secret: asdfasdf
