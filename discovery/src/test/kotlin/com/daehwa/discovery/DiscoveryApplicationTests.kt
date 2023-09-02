@@ -1,10 +1,10 @@
-package com.daehwa.brain
+package com.daehwa.discovery
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class BrainApplicationTests {
+class DiscoveryApplicationTests {
 
     @Test
     fun contextLoads() {
