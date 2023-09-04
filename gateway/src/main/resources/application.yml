@@ -18,5 +18,5 @@ spring:
       routes:
         - id: user
           uri: lb://USER
-          perdicates:
-            - Path/user-service/**
+          predicates:
+            - Path=/user-service/**

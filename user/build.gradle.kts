@@ -47,6 +47,9 @@ dependencies {
     implementation("io.github.microutils:kotlin-logging:$kotlinLoggingVersion")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 
+    // spring cloud
+    implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
+
     // 시큐리티
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.security:spring-security-test")
@@ -65,6 +68,14 @@ dependencies {
     testImplementation("org.flywaydb:flyway-mysql:$flywayVersion")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+}
+
+val springCloudVersion = "2022.0.4"
+
+dependencyManagement {
+    imports {
+        mavenBom("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion")
+    }
 }
 
 tasks.withType<KotlinCompile> {
