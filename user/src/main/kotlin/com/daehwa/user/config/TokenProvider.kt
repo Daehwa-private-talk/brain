@@ -36,7 +36,7 @@ class TokenProvider(
     @Transactional
     fun createAccessToken(user: DaehwaUser, refreshToken: String): String {
         val nonce = jasypt.encrypt(refreshToken + "*" + LocalDateTime.now())
-        val claims = getClaims(user.email, nonce)
+        val claims = getClaims(user, nonce)
         val now = Date()
 
         return Jwts.builder()
@@ -47,7 +47,15 @@ class TokenProvider(
             .compact()
     }
 
-    private fun getClaims(email: String, nonce: String) = mapOf("email" to email, "nonce" to nonce)
+    private fun getClaims(user: DaehwaUser, nonce: String) = mapOf(
+        "name" to user.name,
+        "password" to user.password,
+        "authorities" to user.role,
+        "id" to user.id,
+        "email" to user.email,
+        "nickname" to user.nickname,
+        "nonce" to nonce,
+    )
 
     fun resolveAccessToken(request: HttpServletRequest): String? {
         val accessTokenCookie = request.cookies?.firstOrNull { it.name == "daehwa.access_token" }

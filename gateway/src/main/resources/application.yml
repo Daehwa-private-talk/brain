@@ -1,5 +1,5 @@
 server:
-    port: 8080
+  port: 8080
 
 eureka:
   instance:
@@ -20,3 +20,11 @@ spring:
           uri: lb://USER
           predicates:
             - Path=/user-service/**
+          filters:
+            - PrefixPath=/v1
+            - RewritePath=/user/?(?<segment>.*), /$\{segment}
+            - ExceptionHandlerFilter
+            - AuthorizationHeaderFilter
+
+token:
+  secret-key: ${SECRET_KEY}
