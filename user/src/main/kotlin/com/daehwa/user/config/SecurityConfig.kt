@@ -97,7 +97,7 @@ class JwtAccessDeniedHandler : AccessDeniedHandler {
         accessDeniedException: AccessDeniedException
     ) {
         logger.debug(
-            "JwtAccessDeniedHandler exception has occureed. URL [${HttpServletUtils.getFullURL(request)}]",
+            "JwtAccessDeniedHandler exception has occurred. URL [${HttpServletUtils.getFullURL(request)}]",
             accessDeniedException
         )
         response.sendError(HttpServletResponse.SC_FORBIDDEN)

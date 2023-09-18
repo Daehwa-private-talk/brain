@@ -47,7 +47,6 @@ dependencies {
     implementation("io.jsonwebtoken:jjwt-api:$jwtVersion")
     runtimeOnly("io.jsonwebtoken:jjwt-impl:$jwtVersion")
     runtimeOnly("io.jsonwebtoken:jjwt-jackson:$jwtVersion")
-    implementation("org.springframework.boot:spring-boot-starter-security")
 
     // default setting
     implementation("org.jetbrains.kotlin:kotlin-reflect")

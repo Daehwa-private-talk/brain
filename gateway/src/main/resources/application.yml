@@ -19,10 +19,25 @@ spring:
         - id: user
           uri: lb://USER
           predicates:
+            - Path=/user-service/v1/api/auth/sign-up
+            - Method=POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+        - id: user
+          uri: lb://USER
+          predicates:
+            - Path=/user-service/v1/api/auth/sign-in
+            - Method=POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+        - id: user
+          uri: lb://USER
+          predicates:
             - Path=/user-service/**
           filters:
-            - PrefixPath=/v1
-            - RewritePath=/user/?(?<segment>.*), /$\{segment}
+            - RewritePath=/user-service/?(?<segment>.*), /$\{segment}
             - ExceptionHandlerFilter
             - AuthorizationHeaderFilter
 

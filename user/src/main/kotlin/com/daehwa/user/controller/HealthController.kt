@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping(produces = [MediaType.APPLICATION_JSON_VALUE], name = "/api/v1")
+@RequestMapping(produces = [MediaType.APPLICATION_JSON_VALUE], value = ["/v1/api"])
 @Hidden
 class HealthController {
     @GetMapping("/health")

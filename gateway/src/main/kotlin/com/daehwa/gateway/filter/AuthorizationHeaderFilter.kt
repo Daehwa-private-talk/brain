@@ -15,7 +15,7 @@ import java.util.*
 @Component
 class AuthorizationHeaderFilter(
     @Value("\${token.secret-key}")
-    val secretKey: String,
+    private val secretKey: String,
 ) : AbstractGatewayFilterFactory<AuthorizationHeaderFilter.Config>(Config::class.java) {
     companion object {
         private const val COOKIE_KEY = "daehwa.access_token"
