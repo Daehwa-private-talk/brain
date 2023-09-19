@@ -1,9 +1,9 @@
 package com.daehwa.user.common.exception
 
-import com.daehwa.user.dto.base_response.FailureResponse
-import com.daehwa.user.dto.base_response.ResponseCode
-import com.daehwa.user.dto.base_response.Status
-import com.daehwa.user.utils.HttpServletUtils
+import com.daehwa.user.common.dto.FailureResponse
+import com.daehwa.user.common.dto.ResponseCode
+import com.daehwa.user.common.dto.Status
+import com.daehwa.user.common.utils.HttpServletUtils
 import jakarta.servlet.http.HttpServletRequest
 import mu.KotlinLogging
 import org.springframework.boot.logging.LogLevel
