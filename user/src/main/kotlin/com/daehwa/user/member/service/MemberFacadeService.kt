@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class MemberFacadeService {
-    fun getFriends(userId: Int): List<> {
+    fun getFriends(userId: Int) {
 
     }
 }
