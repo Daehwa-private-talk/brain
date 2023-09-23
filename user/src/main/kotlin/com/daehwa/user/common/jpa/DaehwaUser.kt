@@ -2,13 +2,7 @@ package com.daehwa.user.common.jpa
 
 import com.daehwa.user.auth.enums.Role
 import com.daehwa.user.common.jpa.base_entity.BaseEntity
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.EnumType
-import jakarta.persistence.Enumerated
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
+import jakarta.persistence.*
 import org.hibernate.annotations.Where
 import java.time.LocalDateTime
 
@@ -27,6 +21,10 @@ class DaehwaUser(
     var signInAt: LocalDateTime? = null,
     @Enumerated(EnumType.STRING)
     val role: Role = Role.USER,
+    @OneToMany(mappedBy = "user", cascade = [CascadeType.REMOVE], orphanRemoval = true)
+    val userMap: List<FriendMap> = emptyList(),
+    @OneToMany(mappedBy = "friend", cascade = [CascadeType.REMOVE], orphanRemoval = true)
+    val friendMap: List<FriendMap> = emptyList(),
     @Column(name = "is_enabled", columnDefinition = "TINYINT")
     val enabled: Boolean = true,
     @Column(name = "is_deleted", columnDefinition = "TINYINT")
