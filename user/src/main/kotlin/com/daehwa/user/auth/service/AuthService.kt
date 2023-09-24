@@ -1,13 +1,13 @@
 package com.daehwa.user.auth.service
 
-import com.daehwa.user.common.exception.DaehwaException
-import com.daehwa.user.common.exception.ErrorCode
-import com.daehwa.user.common.config.TokenProperty
-import com.daehwa.user.common.config.TokenProvider
 import com.daehwa.user.auth.dto.SignInRequest
 import com.daehwa.user.auth.dto.SignInResponse
 import com.daehwa.user.auth.dto.SignUpRequest
 import com.daehwa.user.auth.dto.TokenResponse
+import com.daehwa.user.common.config.TokenProperty
+import com.daehwa.user.common.config.TokenProvider
+import com.daehwa.user.common.exception.DaehwaException
+import com.daehwa.user.common.exception.ErrorCode
 import com.daehwa.user.common.jpa.DaehwaUser
 import com.daehwa.user.common.jpa.UserRepository
 import jakarta.transaction.Transactional
@@ -24,7 +24,7 @@ class AuthService(
 ) {
     @Transactional
     fun signUp(request: SignUpRequest): DaehwaUser {
-        val (email, password, name, nickname) = request
+        val (email, password, name) = request
         validateEmail(email)
 
         return userRepository.save(
@@ -32,8 +32,7 @@ class AuthService(
                 email = email,
                 password = passwordEncoder.encode(password),
                 name = name,
-                nickname = nickname,
-            )
+            ),
         )
     }
 
@@ -58,7 +57,7 @@ class AuthService(
             TokenResponse(
                 accessToken = accessToken,
                 refreshToken = refreshToken,
-            )
+            ),
         )
     }
 
@@ -73,7 +72,7 @@ class AuthService(
         val refreshToken = tokenProvider.createRefreshToken()
         user.updateRefreshToken(
             refreshToken = refreshToken,
-            refreshTokenExpiredAt = LocalDateTime.now().plusHours(tokenProperty.refreshTokenRenewHour)
+            refreshTokenExpiredAt = LocalDateTime.now().plusHours(tokenProperty.refreshTokenRenewHour),
         )
         return refreshToken
     }
@@ -97,7 +96,7 @@ class AuthService(
 
         return TokenResponse(
             refreshToken = newRefreshToken,
-            accessToken = createAccessJwt(user, newRefreshToken)
+            accessToken = createAccessJwt(user, newRefreshToken),
         )
     }
 }

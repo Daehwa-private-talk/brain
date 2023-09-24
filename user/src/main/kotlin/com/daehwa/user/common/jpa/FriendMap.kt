@@ -6,12 +6,15 @@ import jakarta.persistence.*
 @Entity
 class FriendMap(
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int = 0,
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     val user: DaehwaUser,
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "friend_id")
     val friend: DaehwaUser,
-): BaseEntity()
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "profile_id")
+    val profile: Profile,
+) : BaseEntity()

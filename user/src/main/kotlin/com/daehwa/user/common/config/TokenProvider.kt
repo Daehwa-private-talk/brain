@@ -53,7 +53,6 @@ class TokenProvider(
         "authorities" to user.role,
         "id" to user.id,
         "email" to user.email,
-        "nickname" to user.nickname,
         "nonce" to nonce,
     )
 
@@ -97,7 +96,6 @@ class TokenProvider(
             authorities = listOf(SimpleGrantedAuthority(user.role.getRoleName())),
             id = user.id,
             email = user.email,
-            nickname = user.nickname,
         )
 
         return UsernamePasswordAuthenticationToken(authenticatedUser, null, authenticatedUser.authorities)

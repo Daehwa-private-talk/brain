@@ -15,7 +15,6 @@ class DaehwaUser(
     val email: String,
     val password: String,
     val name: String,
-    val nickname: String,
     var refreshToken: String? = null,
     var refreshTokenExpiredAt: LocalDateTime? = null,
     var signInAt: LocalDateTime? = null,
@@ -25,6 +24,8 @@ class DaehwaUser(
     val userMap: List<FriendMap> = emptyList(),
     @OneToMany(mappedBy = "friend", cascade = [CascadeType.REMOVE], orphanRemoval = true)
     val friendMap: List<FriendMap> = emptyList(),
+    @OneToOne(mappedBy = "user", cascade = [CascadeType.REMOVE])
+    val profile: Profile? = null,
     @Column(name = "is_enabled", columnDefinition = "TINYINT")
     val enabled: Boolean = true,
     @Column(name = "is_deleted", columnDefinition = "TINYINT")
