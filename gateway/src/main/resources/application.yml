@@ -11,6 +11,8 @@ eureka:
     register-with-eureka: true
 
 spring:
+  main:
+    web-application-type: reactive
   application:
     name: gateway
   cloud:
@@ -39,7 +41,6 @@ spring:
           filters:
             - RewritePath=/user-service/?(?<segment>.*), /$\{segment}
             - ExceptionHandlerFilter
-            - AuthorizationHeaderFilter
 
 token:
   secret-key: ${SECRET_KEY}

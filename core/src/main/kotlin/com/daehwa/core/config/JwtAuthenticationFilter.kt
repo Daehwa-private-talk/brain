@@ -1,10 +1,10 @@
-package com.daehwa.user.common.config
+package com.daehwa.core.config
 
-import com.daehwa.user.common.exception.DaehwaException
-import com.daehwa.user.common.exception.ErrorCode
-import com.daehwa.user.common.jpa.DaehwaUser
-import com.daehwa.user.common.jpa.UserRepository
-import com.daehwa.user.common.utils.CookieUtils
+import com.daehwa.core.exception.DaehwaException
+import com.daehwa.core.exception.ErrorCode
+import com.daehwa.core.jpa.DaehwaUser
+import com.daehwa.core.jpa.UserRepository
+import com.daehwa.core.utils.CookieUtils
 import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
@@ -15,7 +15,7 @@ import java.time.LocalDateTime
 
 @Component
 class JwtAuthenticationFilter(
-    private val tokenProvider: TokenProvider,
+    private val tokenService: TokenService,
     private val userRepository: UserRepository,
 ) : OncePerRequestFilter() {
     companion object {
@@ -26,12 +26,12 @@ class JwtAuthenticationFilter(
     override fun doFilterInternal(
         request: HttpServletRequest,
         response: HttpServletResponse,
-        filterChain: FilterChain
+        filterChain: FilterChain,
     ) {
-        val token: String? = tokenProvider.resolveAccessToken(request)
+        val token: String? = tokenService.resolveAccessToken(request)
 
         if (validateToken(token)) {
-            val refreshToken = tokenProvider.getRefreshToken(token!!)
+            val refreshToken = tokenService.getRefreshToken(token!!)
 
             val user = userRepository.findByRefreshToken(refreshToken) ?: kotlin.run {
                 expireAccessToken(request, response)
@@ -39,14 +39,13 @@ class JwtAuthenticationFilter(
             }
 
             validateSignInAt(user.signInAt!!)
-
             setAuthentication(user)
         }
 
         filterChain.doFilter(request, response)
     }
 
-    private fun validateToken(token: String?) = tokenProvider.isValidateToken(token)
+    private fun validateToken(token: String?) = tokenService.isValidateToken(token)
     private fun validateSignInAt(signInAt: LocalDateTime) {
         if (signInAt.plusHours(ACCESS_TOKEN_EXPIRE_HOUR).isBefore(LocalDateTime.now())) {
             throw DaehwaException(ErrorCode.EXPIRED, "만료된 access token 입니다.")
@@ -62,13 +61,13 @@ class JwtAuthenticationFilter(
                 path = "/",
                 minuteMaxAge = 0,
                 httpOnly = true,
-                secured = true
+                secured = true,
             )
         }
     }
 
     private fun setAuthentication(user: DaehwaUser) {
-        val authentication = tokenProvider.getAuthentication(user)
+        val authentication = tokenService.getAuthentication(user)
         SecurityContextHolder.getContext().authentication = authentication
     }
 }

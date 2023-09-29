@@ -1,13 +1,12 @@
 dependencies {
     val flywayVersion = "9.15.2"
-    val springDocVersion = "2.1.0"
     val kotlinLoggingVersion = "3.0.5"
     val jwtVersion = "0.11.5"
 
     implementation(project(":core"))
+    testImplementation(project(":core"))
 
     // 기본 설정
-    implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("io.github.microutils:kotlin-logging:$kotlinLoggingVersion")
@@ -23,9 +22,6 @@ dependencies {
     runtimeOnly("io.jsonwebtoken:jjwt-impl:$jwtVersion")
     runtimeOnly("io.jsonwebtoken:jjwt-jackson:$jwtVersion")
     implementation("com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.5")
-
-    // spring doc
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:$springDocVersion")
 
     // DB
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")

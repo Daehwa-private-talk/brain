@@ -1,4 +1,4 @@
-package com.daehwa.user.common.utils
+package com.daehwa.core.utils
 
 import jakarta.servlet.http.HttpServletRequest
 

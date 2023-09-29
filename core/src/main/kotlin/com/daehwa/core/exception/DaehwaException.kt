@@ -1,8 +1,7 @@
-package com.daehwa.user.common.exception
-
+package com.daehwa.core.exception
 
 class DaehwaException(
     val errorCode: ErrorCode,
     message: String? = null,
-    cause: Throwable? = null
+    cause: Throwable? = null,
 ) : RuntimeException(message, cause)

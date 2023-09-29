@@ -1,4 +1,4 @@
-package com.daehwa.user.common.dto
+package com.daehwa.core.dto
 
 class SuccessResponse<T : Any?>(status: Status, result: T) : BaseResponse<T>(true, status, result) {
     companion object {

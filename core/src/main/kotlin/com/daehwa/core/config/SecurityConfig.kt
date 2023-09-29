@@ -1,7 +1,7 @@
-package com.daehwa.user.common.config
+package com.daehwa.core.config
 
-import com.daehwa.user.common.utils.HttpServletUtils
-import com.daehwa.user.common.utils.SecurityRequestUriUtils
+import com.daehwa.core.utils.HttpServletUtils
+import com.daehwa.core.utils.SecurityRequestUriUtils
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
 import mu.KotlinLogging

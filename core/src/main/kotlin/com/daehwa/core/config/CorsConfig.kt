@@ -1,4 +1,4 @@
-package com.daehwa.user.common.config
+package com.daehwa.core.config
 
 import mu.KotlinLogging
 import org.springframework.beans.factory.annotation.Value
@@ -18,7 +18,7 @@ class CorsConfig(
 
     @Bean
     fun corsConfigurationSource(): CorsConfigurationSource {
-        logger.debug("allowOrigins: $allowOrigins")
+        logger.debug("allowOrigins: {}", allowOrigins)
         logger.debug("check cd process")
 
         val configuration = CorsConfiguration()

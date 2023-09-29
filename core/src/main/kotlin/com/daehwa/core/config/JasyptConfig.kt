@@ -1,4 +1,4 @@
-package com.daehwa.user.common.config
+package com.daehwa.core.config
 
 import org.jasypt.encryption.StringEncryptor
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor

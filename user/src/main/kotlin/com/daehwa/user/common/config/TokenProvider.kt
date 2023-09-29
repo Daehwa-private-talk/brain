@@ -1,20 +1,15 @@
 package com.daehwa.user.common.config
 
-import com.daehwa.user.common.config.JasyptConfig.Companion.JASYPT_ENCRYPTOR
-import com.daehwa.user.common.jpa.AuthenticatedUser
-import com.daehwa.user.common.jpa.DaehwaUser
-import com.daehwa.user.common.utils.UUIDUtils
-import io.jsonwebtoken.Claims
+import com.daehwa.core.config.JasyptConfig.Companion.JASYPT_ENCRYPTOR
+import com.daehwa.core.config.TokenProperty
+import com.daehwa.core.jpa.DaehwaUser
+import com.daehwa.core.utils.UUIDUtils
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
 import io.jsonwebtoken.security.Keys
-import jakarta.servlet.http.HttpServletRequest
 import jakarta.transaction.Transactional
 import org.jasypt.encryption.StringEncryptor
 import org.springframework.beans.factory.annotation.Qualifier
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
-import org.springframework.security.core.Authentication
-import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.stereotype.Component
 import java.time.LocalDateTime
 import java.util.*
@@ -26,10 +21,6 @@ class TokenProvider(
     private val jasypt: StringEncryptor,
 ) {
     private val signingKey = Keys.hmacShaKeyFor(tokenProperty.secretKey.toByteArray())
-
-    companion object {
-        const val AUTHORIZATION_HEADER = "Authorization"
-    }
 
     fun createRefreshToken(): String = UUIDUtils.generate()
 
@@ -55,49 +46,4 @@ class TokenProvider(
         "email" to user.email,
         "nonce" to nonce,
     )
-
-    fun resolveAccessToken(request: HttpServletRequest): String? {
-        val accessTokenCookie = request.cookies?.firstOrNull { it.name == "daehwa.access_token" }
-
-        return accessTokenCookie?.value ?: request.getHeader(AUTHORIZATION_HEADER)
-    }
-
-    fun isValidateToken(token: String?): Boolean {
-        return try {
-            val claims: Claims = Jwts.parserBuilder()
-                .setSigningKey(signingKey)
-                .build()
-                .parseClaimsJws(token)
-                .body
-
-            isNotExpired(claims)
-        } catch (e: Exception) {
-            false
-        }
-    }
-
-    private fun isNotExpired(claims: Claims): Boolean = claims.expiration.after(Date())
-
-    fun getRefreshToken(token: String): String {
-        val nonce = Jwts.parserBuilder()
-            .setSigningKey(signingKey)
-            .build()
-            .parseClaimsJws(token)
-            .body["nonce"]
-            .toString()
-
-        return jasypt.decrypt(nonce).split("*")[0]
-    }
-
-    fun getAuthentication(user: DaehwaUser): Authentication {
-        val authenticatedUser = AuthenticatedUser(
-            name = user.name,
-            password = user.password,
-            authorities = listOf(SimpleGrantedAuthority(user.role.getRoleName())),
-            id = user.id,
-            email = user.email,
-        )
-
-        return UsernamePasswordAuthenticationToken(authenticatedUser, null, authenticatedUser.authorities)
-    }
 }

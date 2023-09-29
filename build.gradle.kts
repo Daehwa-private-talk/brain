@@ -66,39 +66,15 @@ subprojects {
 
 
     dependencies {
-        val flywayVersion = "9.15.2"
         val springDocVersion = "2.1.0"
-        val kotlinLoggingVersion = "3.0.5"
-        val jwtVersion = "0.11.5"
 
-        // 기본 설정
+        //default settings
         implementation("org.springframework.boot:spring-boot-starter-web")
-        implementation("org.springframework.boot:spring-boot-starter-validation")
         implementation("org.jetbrains.kotlin:kotlin-reflect")
-        implementation("io.github.microutils:kotlin-logging:$kotlinLoggingVersion")
-        annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
-
-        // spring cloud
-        implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
-
-        // 시큐리티
-        implementation("org.springframework.boot:spring-boot-starter-security")
-        implementation("org.springframework.security:spring-security-test")
-        implementation("io.jsonwebtoken:jjwt-api:$jwtVersion")
-        runtimeOnly("io.jsonwebtoken:jjwt-impl:$jwtVersion")
-        runtimeOnly("io.jsonwebtoken:jjwt-jackson:$jwtVersion")
-        implementation("com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.5")
+        testImplementation("org.springframework.boot:spring-boot-starter-test")
 
         // spring doc
         implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:$springDocVersion")
-
-        // DB
-        implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-        implementation("com.mysql:mysql-connector-j")
-        implementation("org.flywaydb:flyway-mysql:$flywayVersion")
-        testImplementation("org.flywaydb:flyway-mysql:$flywayVersion")
-
-        testImplementation("org.springframework.boot:spring-boot-starter-test")
     }
 
     val springCloudVersion = "2022.0.4"

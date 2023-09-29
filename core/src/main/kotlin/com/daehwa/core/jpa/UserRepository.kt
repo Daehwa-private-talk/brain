@@ -1,6 +1,5 @@
-package com.daehwa.user.common.jpa
+package com.daehwa.core.jpa
 
-import com.daehwa.user.common.jpa.DaehwaUser
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface UserRepository : JpaRepository<DaehwaUser, Int> {

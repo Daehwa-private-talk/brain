@@ -1,6 +1,6 @@
-package com.daehwa.user.common.utils
+package com.daehwa.core.utils
 
-import java.util.UUID
+import java.util.*
 
 object UUIDUtils {
     fun generate(): String = UUID.randomUUID().toString()

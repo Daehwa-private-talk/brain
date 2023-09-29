@@ -1,6 +1,6 @@
-package com.daehwa.user.common.exception
+package com.daehwa.core.exception
 
-import com.daehwa.user.common.dto.ResponseCode
+import com.daehwa.core.dto.ResponseCode
 import org.springframework.boot.logging.LogLevel
 
 enum class ErrorCode(val responseCode: ResponseCode, val logLevel: LogLevel) {

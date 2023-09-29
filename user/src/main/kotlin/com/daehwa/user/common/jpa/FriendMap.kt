@@ -1,5 +1,6 @@
 package com.daehwa.user.common.jpa
 
+import com.daehwa.core.jpa.DaehwaUser
 import com.daehwa.user.common.jpa.base_entity.BaseEntity
 import jakarta.persistence.*
 
@@ -10,11 +11,8 @@ class FriendMap(
     val id: Int = 0,
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    val user: DaehwaUser,
+    val user: Profile,
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "friend_id")
-    val friend: DaehwaUser,
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "profile_id")
-    val profile: Profile,
+    val friend: Profile,
 ) : BaseEntity()

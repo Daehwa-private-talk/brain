@@ -1,6 +1,6 @@
-package com.daehwa.user.common.jpa
+package com.daehwa.core.jpa
 
-import com.daehwa.user.auth.enums.Role
+import com.daehwa.core.enums.Role
 import com.daehwa.user.common.jpa.base_entity.BaseEntity
 import jakarta.persistence.*
 import org.hibernate.annotations.Where
@@ -20,12 +20,6 @@ class DaehwaUser(
     var signInAt: LocalDateTime? = null,
     @Enumerated(EnumType.STRING)
     val role: Role = Role.USER,
-    @OneToMany(mappedBy = "user", cascade = [CascadeType.REMOVE], orphanRemoval = true)
-    val userMap: List<FriendMap> = emptyList(),
-    @OneToMany(mappedBy = "friend", cascade = [CascadeType.REMOVE], orphanRemoval = true)
-    val friendMap: List<FriendMap> = emptyList(),
-    @OneToOne(mappedBy = "user", cascade = [CascadeType.REMOVE])
-    val profile: Profile? = null,
     @Column(name = "is_enabled", columnDefinition = "TINYINT")
     val enabled: Boolean = true,
     @Column(name = "is_deleted", columnDefinition = "TINYINT")

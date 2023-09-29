@@ -4,7 +4,7 @@ import com.daehwa.user.auth.dto.SignInRequest
 import com.daehwa.user.auth.dto.SignInResponse
 import com.daehwa.user.auth.dto.SignUpRequest
 import com.daehwa.user.auth.dto.TokenResponse
-import com.daehwa.user.common.dto.SuccessResponse
+import com.daehwa.core.dto.SuccessResponse
 import com.daehwa.user.auth.service.AuthService
 import jakarta.validation.Valid
 import org.springframework.web.bind.annotation.GetMapping

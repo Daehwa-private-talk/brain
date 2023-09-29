@@ -1,4 +1,4 @@
-package com.daehwa.user.common.utils
+package com.daehwa.core.utils
 
 object SecurityRequestUriUtils {
     private val GLOBAL_ALLOWED_URIS = listOf(

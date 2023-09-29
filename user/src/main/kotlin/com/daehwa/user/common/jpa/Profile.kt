@@ -1,5 +1,6 @@
 package com.daehwa.user.common.jpa
 
+import com.daehwa.core.jpa.DaehwaUser
 import com.daehwa.user.common.jpa.base_entity.BaseEntity
 import jakarta.persistence.*
 
@@ -11,9 +12,9 @@ class Profile(
     val nickname: String?,
     val image: String?,
     val statusMessage: String?,
-    @OneToOne
-    @JoinColumn(name = "user_id")
-    val user: DaehwaUser,
-    @OneToMany(mappedBy = "profile", cascade = [CascadeType.REMOVE], orphanRemoval = true)
-    val friendMaps: List<FriendMap>
+    val userId: Int,
+    @OneToMany(mappedBy = "user", cascade = [CascadeType.REMOVE], orphanRemoval = true)
+    val friendMaps: List<FriendMap>,
+    @OneToMany(mappedBy = "friend", cascade = [CascadeType.REMOVE], orphanRemoval = true)
+    val userMaps: List<FriendMap>,
 ) : BaseEntity()

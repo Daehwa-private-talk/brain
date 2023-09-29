@@ -1,8 +1,8 @@
-package com.daehwa.user.common.config
+package com.daehwa.core.config
 
-import com.daehwa.user.common.exception.DaehwaException
-import com.daehwa.user.common.dto.FailureResponse
-import com.daehwa.user.common.dto.Status
+import com.daehwa.core.dto.FailureResponse
+import com.daehwa.core.dto.Status
+import com.daehwa.core.exception.DaehwaException
 import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
