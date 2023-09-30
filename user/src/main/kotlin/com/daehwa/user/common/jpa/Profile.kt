@@ -1,6 +1,5 @@
 package com.daehwa.user.common.jpa
 
-import com.daehwa.core.jpa.DaehwaUser
 import com.daehwa.user.common.jpa.base_entity.BaseEntity
 import jakarta.persistence.*
 
