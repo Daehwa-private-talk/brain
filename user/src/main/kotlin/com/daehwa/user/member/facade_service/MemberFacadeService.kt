@@ -13,11 +13,6 @@ class MemberFacadeService(
 ) {
     @Transactional
     fun getMemberProfiles(userId: Int): List<GetMemberResponse> {
-        /**
-         * 1. 유저를 가져온다
-         * 2. 친구 맵 목록을 가져온다
-         * 3. 친구들 profile을 넘겨준다
-         */
         val user = profileService.getProfile(userId)
         val friendMaps = friendMapService.getFriendMaps(user)
         val friends = profileService.getProfiles(friendMaps.map { it.friendProfile.id })
