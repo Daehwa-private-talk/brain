@@ -23,23 +23,23 @@ CREATE TABLE `daehwa_user`
 
 CREATE TABLE `friend_map`
 (
-    `id`         INT      NOT NULL AUTO_INCREMENT,
-    `user_id`    INT      NOT NULL,
-    `friend_id`  INT      NOT NULL,
-    `profile_id` INT      NOT NULL,
-    `created_at` DATETIME NOT NULL,
-    `updated_at` DATETIME NOT NULL,
+    `id`                INT      NOT NULL AUTO_INCREMENT,
+    `user_profile_id`   INT      NOT NULL,
+    `friend_profile_id` INT      NOT NULL,
+    `created_at`        DATETIME NOT NULL,
+    `updated_at`        DATETIME NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
 
 CREATE TABLE `profile`
 (
-    `id`             INT      NOT NULL AUTO_INCREMENT,
+    `id`             INT         NOT NULL AUTO_INCREMENT,
+    `name`           VARCHAR(50) NOT NULL,
     `nickname`       VARCHAR(50) NULL,
     `image`          VARCHAR(255) NULL,
     `status_message` VARCHAR(50) NULL,
-    `user_id`        INT      NOT NULL,
-    `created_at`     DATETIME NOT NULL,
-    `updated_at`     DATETIME NOT NULL,
+    `user_id`        INT         NOT NULL,
+    `created_at`     DATETIME    NOT NULL,
+    `updated_at`     DATETIME    NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;

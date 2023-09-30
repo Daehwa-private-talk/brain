@@ -10,9 +10,9 @@ class FriendMap(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int = 0,
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    val user: Profile,
+    @JoinColumn(name = "user_profile_id")
+    val userProfile: Profile,
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "friend_id")
-    val friend: Profile,
+    @JoinColumn(name = "friend_profile_id")
+    val friendProfile: Profile,
 ) : BaseEntity()

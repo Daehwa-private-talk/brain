@@ -9,12 +9,13 @@ class Profile(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int = 0,
+    val name: String,
     val nickname: String?,
     val image: String?,
     val statusMessage: String?,
     val userId: Int,
-    @OneToMany(mappedBy = "user", cascade = [CascadeType.REMOVE], orphanRemoval = true)
+    @OneToMany(mappedBy = "userProfile", cascade = [CascadeType.REMOVE], orphanRemoval = true)
     val friendMaps: List<FriendMap>,
-    @OneToMany(mappedBy = "friend", cascade = [CascadeType.REMOVE], orphanRemoval = true)
+    @OneToMany(mappedBy = "friendProfile", cascade = [CascadeType.REMOVE], orphanRemoval = true)
     val userMaps: List<FriendMap>,
 ) : BaseEntity()
