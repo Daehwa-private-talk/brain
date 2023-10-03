@@ -4,7 +4,7 @@ import org.springframework.http.HttpStatus
 
 enum class ResponseCode(val code: Int, val httpStatus: HttpStatus) {
     OK(2000, HttpStatus.OK),
-    DUPLICATED(2001, HttpStatus.CONFLICT),
+    DUPLICATED(4091, HttpStatus.CONFLICT),
     UNAUTHORIZED(4001, HttpStatus.UNAUTHORIZED),
     FORBIDDEN(4003, HttpStatus.FORBIDDEN),
     NOT_FOUND(4004, HttpStatus.NOT_FOUND),

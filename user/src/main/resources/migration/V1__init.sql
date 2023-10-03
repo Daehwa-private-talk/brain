@@ -34,7 +34,6 @@ CREATE TABLE `friend_map`
 CREATE TABLE `profile`
 (
     `id`             INT         NOT NULL AUTO_INCREMENT,
-    `name`           VARCHAR(50) NOT NULL,
     `nickname`       VARCHAR(50) NULL,
     `image`          VARCHAR(255) NULL,
     `status_message` VARCHAR(50) NULL,
