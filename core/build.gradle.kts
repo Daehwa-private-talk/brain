@@ -1,3 +1,9 @@
+tasks {
+    bootJar {
+        enabled = false
+    }
+}
+
 dependencies {
     val jwtVersion = "0.11.5"
     val kotlinLoggingVersion = "3.0.5"

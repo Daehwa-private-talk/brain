@@ -1,3 +1,13 @@
+tasks {
+    bootJar {
+        enabled = true
+    }
+
+    jar {
+        enabled = false
+    }
+}
+
 dependencies {
     val jwtVersion = "0.11.5"
 
