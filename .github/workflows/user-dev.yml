@@ -22,6 +22,4 @@ jobs:
           cache: 'gradle'
 
       - name: Build with gradle
-        run: |
-          ./gradlew clean
-          ./gradlew build -x test
+        run: ./gradlew clean file:build -x test
