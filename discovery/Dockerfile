@@ -6,6 +6,6 @@ ENV PATH "${JAVA_HOME}/bin:${PATH}"
 ENV TZ=Asia/Seoul
 ENV LC_ALL=C.UTF-8
 
-COPY ./build/libs/discovery-0.0.1-SNAPSHOT.jar ./APP.jar
+COPY discovery/build/libs/discovery-0.0.1-SNAPSHOT.jar ./APP.jar
 
 CMD ["java", "-jar", "APP.jar"]
