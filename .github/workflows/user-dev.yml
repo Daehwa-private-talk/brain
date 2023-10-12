@@ -3,7 +3,7 @@ on:
   push:
     branches: ['main']
     paths:
-      - file/**
+      - user/**
       - core/**
       - .github/workflows/user-dev.yml
 

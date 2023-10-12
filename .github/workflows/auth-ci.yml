@@ -2,7 +2,7 @@ name: daehwa api CI
 
 on:
   pull_request:
-    branches: [ "main" ]
+    branches: [ "develop" ]
 
 jobs:
   ci:
