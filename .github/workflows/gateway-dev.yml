@@ -1,11 +1,10 @@
-name: daehwa user api CI / CD
+name: daehwa gateway api CI / CD
 on:
   push:
     branches: ['main']
     paths:
-      - user/**
-      - core/**
-      - .github/workflows/user-dev.yml
+      - gateway/**
+      - .github/workflows/gateway-dev.yml
 
 jobs:
   ci:
@@ -22,7 +21,7 @@ jobs:
           cache: 'gradle'
 
       - name: Build with gradle
-        run: ./gradlew clean user:build -x test
+        run: ./gradlew clean gateway:build -x test
 
       - name: Set up Docker Buildx
         id: buildx
@@ -38,7 +37,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: rkdl0829/user-service
+          images: rkdl0829/gateway-service
           tags: |
             type=raw,value=test
             type=raw,value=${{ github.run_number }}
