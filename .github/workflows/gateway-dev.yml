@@ -50,8 +50,3 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           push: true
-
-      - name: Sign images
-        uses: dunamu/sign-container-images@v1
-        with:
-          tags: ${{ steps.meta.outputs.tags }}
