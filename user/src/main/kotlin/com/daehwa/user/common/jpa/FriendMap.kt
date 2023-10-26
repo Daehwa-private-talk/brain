@@ -1,7 +1,6 @@
 package com.daehwa.user.common.jpa
 
-import com.daehwa.core.jpa.DaehwaUser
-import com.daehwa.user.common.jpa.base_entity.BaseEntity
+import com.daehwa.user.common.jpa.base_entity.DateBaseEntity
 import jakarta.persistence.*
 
 @Entity
@@ -15,4 +14,4 @@ class FriendMap(
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "friend_profile_id")
     val friendProfile: Profile,
-) : BaseEntity()
+) : DateBaseEntity()

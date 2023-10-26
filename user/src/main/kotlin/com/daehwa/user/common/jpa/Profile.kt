@@ -1,6 +1,6 @@
 package com.daehwa.user.common.jpa
 
-import com.daehwa.user.common.jpa.base_entity.BaseEntity
+import com.daehwa.user.common.jpa.base_entity.DateBaseEntity
 import jakarta.persistence.CascadeType
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
@@ -21,4 +21,4 @@ class Profile(
     val friendMaps: List<FriendMap> = emptyList(),
     @OneToMany(mappedBy = "friendProfile", cascade = [CascadeType.REMOVE], orphanRemoval = true)
     val userMaps: List<FriendMap> = emptyList(),
-) : BaseEntity()
+) : DateBaseEntity()

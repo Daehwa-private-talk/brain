@@ -7,12 +7,10 @@ import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 
 @Entity
-class User(
+class ChatRoomUser(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int = 0,
-    val session: String,
-    val name: String,
-    val nickname: String,
-    val email: String,
-): DateBaseEntity()
+    val chatRoomId: Int,
+    val userId: Int
+) : DateBaseEntity()

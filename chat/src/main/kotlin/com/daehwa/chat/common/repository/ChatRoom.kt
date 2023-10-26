@@ -3,6 +3,7 @@ package com.daehwa.chat.common.repository
 import com.daehwa.chat.model.ChatMessage
 import com.daehwa.chat.model.MessageType
 import com.daehwa.chat.service.ChatService
+import com.daehwa.user.common.jpa.base_entity.DateBaseEntity
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
@@ -15,8 +16,9 @@ class ChatRoom(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int,
     val name: String,
+    val createdBy: String,
     val sessions: MutableSet<WebSocketSession>,
-) {
+): DateBaseEntity() {
 
     fun handleActions(session: WebSocketSession, chatMessage: ChatMessage, chatService: ChatService) {
         if (chatMessage.type == MessageType.ENTER) {

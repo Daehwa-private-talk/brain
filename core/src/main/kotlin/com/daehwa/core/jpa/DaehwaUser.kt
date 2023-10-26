@@ -1,7 +1,7 @@
 package com.daehwa.core.jpa
 
 import com.daehwa.core.enums.Role
-import com.daehwa.user.common.jpa.base_entity.BaseEntity
+import com.daehwa.user.common.jpa.base_entity.DateBaseEntity
 import jakarta.persistence.*
 import org.hibernate.annotations.Where
 import java.time.LocalDateTime
@@ -24,7 +24,7 @@ class DaehwaUser(
     val enabled: Boolean = true,
     @Column(name = "is_deleted", columnDefinition = "TINYINT")
     val deleted: Boolean = false,
-) : BaseEntity() {
+) : DateBaseEntity() {
     fun updateRefreshToken(
         refreshToken: String,
         refreshTokenExpiredAt: LocalDateTime,
