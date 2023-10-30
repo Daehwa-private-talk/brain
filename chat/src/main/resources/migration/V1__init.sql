@@ -27,7 +27,6 @@ CREATE TABLE `chat_room_user`
 CREATE TABLE `user`
 (
     `id`       INT          NOT NULL AUTO_INCREMENT,
-    `session`  VARCHAR(255) NOT NULL,
     `name`     VARCHAR(255) NOT NULL,
     `nickname` VARCHAR(255) NOT NULL,
     `email`    VARCHAR(255) NOT NULL,

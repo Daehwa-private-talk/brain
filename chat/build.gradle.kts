@@ -19,7 +19,7 @@ dependencies {
     implementation("io.github.microutils:kotlin-logging:$kotlinLoggingVersion")
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("org.springframework.boot:spring-boot-starter-websocket")
+
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
@@ -33,5 +33,12 @@ dependencies {
     runtimeOnly("io.jsonwebtoken:jjwt-impl:$jwtVersion")
     runtimeOnly("io.jsonwebtoken:jjwt-jackson:$jwtVersion")
     implementation("com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.5")
+
+    // socket
+    implementation("org.springframework.boot:spring-boot-starter-websocket")
+    implementation("org.webjars:stomp-websocket:2.3.3-1")
+    implementation("org.springframework:spring-messaging:6.0.13")
+    implementation("com.fasterxml.jackson.core:jackson-core")
+    implementation("com.fasterxml.jackson.core:jackson-databind")
 }
 
