@@ -36,9 +36,5 @@ dependencies {
 
     // socket
     implementation("org.springframework.boot:spring-boot-starter-websocket")
-    implementation("org.webjars:stomp-websocket:2.3.3-1")
-    implementation("org.springframework:spring-messaging:6.0.13")
-    implementation("com.fasterxml.jackson.core:jackson-core")
-    implementation("com.fasterxml.jackson.core:jackson-databind")
 }
 
