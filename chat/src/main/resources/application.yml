@@ -26,8 +26,6 @@ spring:
     baseline-on-migrate: false
     locations: classpath:migration
   security:
-    basic:
-      enabled: false
     cors:
       allowOrigins: ${CORS_ALLOW_ORIGINS}
 

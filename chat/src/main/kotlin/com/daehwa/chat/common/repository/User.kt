@@ -11,7 +11,6 @@ class User(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int = 0,
-    val session: String,
     val name: String,
     val nickname: String,
     val email: String,

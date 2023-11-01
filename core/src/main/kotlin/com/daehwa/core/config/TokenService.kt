@@ -17,7 +17,7 @@ import java.util.*
 
 @Component
 class TokenService(
-    private val tokenProperty: TokenProperty,
+    tokenProperty: TokenProperty,
     @Qualifier(JASYPT_ENCRYPTOR)
     private val jasypt: StringEncryptor,
 ) {

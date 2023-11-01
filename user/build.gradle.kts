@@ -12,7 +12,6 @@ dependencies {
     val flywayVersion = "9.15.2"
     val kotlinLoggingVersion = "3.0.5"
     val jwtVersion = "0.11.5"
-
     implementation(project(":core"))
     testImplementation(project(":core"))
 
