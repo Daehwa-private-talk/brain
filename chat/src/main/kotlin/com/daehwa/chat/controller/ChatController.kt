@@ -10,6 +10,6 @@ import org.springframework.stereotype.Controller
 class ChatController(
     private val chatService: ChatService,
 ) {
-    @MessageMapping("/chat/enter")
+    @MessageMapping("$SUBSCRIBE_URL/chat/enter")
     fun enter(message: ChatMessage) = chatService.getSubscribe(message)
 }

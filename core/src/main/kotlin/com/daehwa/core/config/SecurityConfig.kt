@@ -41,7 +41,7 @@ class SecurityConfig(
             .authorizeHttpRequests {
                 it
                     .requestMatchers(
-                        *SecurityRequestUriUtils.getGlobalAllowedUris().toTypedArray()
+                        *SecurityRequestUriUtils.getGlobalAllowedUris().toTypedArray(),
                     ).permitAll()
                     .anyRequest().authenticated()
             }
@@ -55,9 +55,10 @@ class SecurityConfig(
     private fun HttpSecurity.defaultConfigure(): HttpSecurity {
         return cors { }
             .csrf { it.disable() }
-            .sessionManagement { it.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
             .formLogin { it.disable() }
-            .anonymous { }
+            .httpBasic { it.disable() }
+            .anonymous { it.disable() }
+            .sessionManagement { it.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
             .exceptionHandling {
                 it.authenticationEntryPoint(jwtAuthenticationEntryPoint)
                 it.accessDeniedHandler(jwtAccessDeniedHandler)
@@ -77,11 +78,11 @@ class JwtAuthenticationEntryPoint : AuthenticationEntryPoint {
     override fun commence(
         request: HttpServletRequest,
         response: HttpServletResponse,
-        authException: AuthenticationException
+        authException: AuthenticationException,
     ) {
         logger.debug(
             "JwtAuthenticationEntryPoint exception has occurred. URL [${HttpServletUtils.getFullURL(request)}]",
-            authException
+            authException,
         )
         response.sendError(HttpServletResponse.SC_UNAUTHORIZED)
     }
@@ -94,11 +95,11 @@ class JwtAccessDeniedHandler : AccessDeniedHandler {
     override fun handle(
         request: HttpServletRequest,
         response: HttpServletResponse,
-        accessDeniedException: AccessDeniedException
+        accessDeniedException: AccessDeniedException,
     ) {
         logger.debug(
             "JwtAccessDeniedHandler exception has occurred. URL [${HttpServletUtils.getFullURL(request)}]",
-            accessDeniedException
+            accessDeniedException,
         )
         response.sendError(HttpServletResponse.SC_FORBIDDEN)
     }

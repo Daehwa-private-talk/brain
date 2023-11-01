@@ -2,5 +2,6 @@ rootProject.name = "brain"
 include("discovery")
 include("gateway")
 include("user")
-include("core")
 include("chat")
+include("core")
+
