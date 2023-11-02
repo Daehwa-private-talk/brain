@@ -1,6 +1,6 @@
 package com.daehwa.user.member.dto
 
-import com.daehwa.user.common.jpa.Profile
+import com.daehwa.user.common.repository.Profile
 
 data class GetMemberResponse(
     val id: Int,

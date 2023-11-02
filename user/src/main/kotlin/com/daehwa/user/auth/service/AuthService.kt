@@ -3,14 +3,13 @@ package com.daehwa.user.auth.service
 import com.daehwa.core.config.TokenProperty
 import com.daehwa.core.exception.DaehwaException
 import com.daehwa.core.exception.ErrorCode
-import com.daehwa.core.jpa.DaehwaUser
-import com.daehwa.core.jpa.UserRepository
 import com.daehwa.user.auth.dto.SignInRequest
 import com.daehwa.user.auth.dto.SignInResponse
 import com.daehwa.user.auth.dto.SignUpRequest
 import com.daehwa.user.auth.dto.TokenResponse
 import com.daehwa.user.common.config.TokenProvider
-
+import com.daehwa.core.config.DaehwaUser
+import com.daehwa.core.config.UserRepository
 import jakarta.transaction.Transactional
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.stereotype.Service

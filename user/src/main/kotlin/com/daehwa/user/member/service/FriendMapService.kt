@@ -1,8 +1,8 @@
 package com.daehwa.user.member.service
 
-import com.daehwa.user.common.jpa.FriendMap
-import com.daehwa.user.common.jpa.FriendMapRepository
-import com.daehwa.user.common.jpa.Profile
+import com.daehwa.user.common.repository.FriendMap
+import com.daehwa.user.common.repository.FriendMapRepository
+import com.daehwa.user.common.repository.Profile
 import org.springframework.stereotype.Service
 
 @Service

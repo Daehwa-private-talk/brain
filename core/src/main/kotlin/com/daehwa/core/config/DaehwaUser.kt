@@ -1,7 +1,7 @@
-package com.daehwa.core.jpa
+package com.daehwa.core.config
 
 import com.daehwa.core.enums.Role
-import com.daehwa.user.common.jpa.base_entity.DateBaseEntity
+import com.daehwa.user.common.repository.base_entity.DateBaseEntity
 import jakarta.persistence.*
 import org.hibernate.annotations.Where
 import java.time.LocalDateTime

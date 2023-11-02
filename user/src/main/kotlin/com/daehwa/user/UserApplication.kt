@@ -10,7 +10,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 
 @ConfigurationPropertiesScan(basePackages = ["com.daehwa.core.*"])
 @ComponentScan(basePackages = ["com.daehwa.core.*", "com.daehwa.user.*"])
-@EnableJpaRepositories(basePackages = ["com.daehwa.core.*", "com.daehwa.user.*"])
 @EntityScan(basePackages = ["com.daehwa.core.*", "com.daehwa.user.*"])
 @EnableDiscoveryClient
 @SpringBootApplication

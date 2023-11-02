@@ -1,0 +1,13 @@
+package com.daehwa.user.common.config
+
+import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Configuration
+import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory
+
+@Configuration
+class RedisConfig(
+    private val property: RedisProperty
+) {
+    @Bean
+    fun redisConnectionFactory() = LettuceConnectionFactory(property.host, property.port)
+}

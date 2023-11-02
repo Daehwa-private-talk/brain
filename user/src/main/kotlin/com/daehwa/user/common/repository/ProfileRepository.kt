@@ -1,4 +1,4 @@
-package com.daehwa.user.common.jpa
+package com.daehwa.user.common.repository
 
 import org.springframework.data.jpa.repository.JpaRepository
 

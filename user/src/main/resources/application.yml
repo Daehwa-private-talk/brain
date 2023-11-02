@@ -28,6 +28,10 @@ spring:
   security:
     cors:
       allow-origins: ${CORS_ALLOW_ORIGINS}
+  data:
+    redis:
+      port: ${REDIS_PORT}
+      host: ${REDIS_HOST}
 
 eureka:
   instance:

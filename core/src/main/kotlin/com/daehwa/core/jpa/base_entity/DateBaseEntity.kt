@@ -1,4 +1,4 @@
-package com.daehwa.user.common.jpa.base_entity
+package com.daehwa.user.common.repository.base_entity
 
 import jakarta.persistence.EntityListeners
 import jakarta.persistence.MappedSuperclass

@@ -37,6 +37,7 @@ dependencies {
     implementation("com.mysql:mysql-connector-j")
     implementation("org.flywaydb:flyway-mysql:$flywayVersion")
     testImplementation("org.flywaydb:flyway-mysql:$flywayVersion")
+    implementation("org.springframework.boot:spring-boot-starter-data-redis")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }

@@ -1,6 +1,6 @@
-package com.daehwa.user.common.jpa
+package com.daehwa.user.common.repository
 
-import com.daehwa.user.common.jpa.base_entity.DateBaseEntity
+import com.daehwa.user.common.repository.base_entity.DateBaseEntity
 import jakarta.persistence.CascadeType
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue

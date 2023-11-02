@@ -2,8 +2,8 @@ package com.daehwa.user.common.config
 
 import com.daehwa.core.config.JasyptConfig.Companion.JASYPT_ENCRYPTOR
 import com.daehwa.core.config.TokenProperty
-import com.daehwa.core.jpa.DaehwaUser
 import com.daehwa.core.utils.UUIDUtils
+import com.daehwa.core.config.DaehwaUser
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
 import io.jsonwebtoken.security.Keys

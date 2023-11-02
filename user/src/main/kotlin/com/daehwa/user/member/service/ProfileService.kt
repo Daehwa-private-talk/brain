@@ -2,8 +2,8 @@ package com.daehwa.user.member.service
 
 import com.daehwa.core.exception.DaehwaException
 import com.daehwa.core.exception.ErrorCode
-import com.daehwa.user.common.jpa.Profile
-import com.daehwa.user.common.jpa.ProfileRepository
+import com.daehwa.user.common.repository.Profile
+import com.daehwa.user.common.repository.ProfileRepository
 import com.daehwa.user.member.dto.CreateProfileRequest
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
