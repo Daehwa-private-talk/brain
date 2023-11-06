@@ -8,7 +8,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient
 import org.springframework.context.annotation.ComponentScan
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 
-@ConfigurationPropertiesScan(basePackages = ["com.daehwa.core.*"])
+@ConfigurationPropertiesScan(basePackages = ["com.daehwa.core.*", "com.daehwa.user.*"])
 @ComponentScan(basePackages = ["com.daehwa.core.*", "com.daehwa.user.*"])
 @EntityScan(basePackages = ["com.daehwa.core.*", "com.daehwa.user.*"])
 @EnableDiscoveryClient

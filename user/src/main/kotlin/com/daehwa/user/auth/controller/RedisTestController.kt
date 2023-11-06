@@ -12,5 +12,5 @@ class RedisTestController(
     fun save() = service.save()
 
     @GetMapping
-    fun get(@RequestParam email: String) = service.get()
+    fun get() = service.get()
 }
