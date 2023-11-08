@@ -1,6 +1,6 @@
-package com.daehwa.core.config
+package com.daehwa.user.common.repository
 
-import com.daehwa.core.enums.Role
+import com.daehwa.user.common.enums.Role
 import com.daehwa.user.common.repository.base_entity.DateBaseEntity
 import jakarta.persistence.*
 import org.hibernate.annotations.Where

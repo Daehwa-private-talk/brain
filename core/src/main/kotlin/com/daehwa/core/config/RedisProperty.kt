@@ -1,4 +1,4 @@
-package com.daehwa.user.common.config
+package com.daehwa.core.config
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.stereotype.Component

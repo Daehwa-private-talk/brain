@@ -1,7 +1,7 @@
 package com.daehwa.user.auth.service
 
-import com.daehwa.core.config.DaehwaUser
-import com.daehwa.core.config.UserRepository
+import com.daehwa.user.common.repository.DaehwaUser
+import com.daehwa.user.common.repository.UserRepository
 import com.daehwa.core.exception.DaehwaException
 import com.daehwa.core.exception.ErrorCode
 import com.daehwa.core.jpa.LoginUser

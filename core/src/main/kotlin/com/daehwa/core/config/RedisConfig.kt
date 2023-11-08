@@ -1,4 +1,4 @@
-package com.daehwa.user.common.config
+package com.daehwa.core.config
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

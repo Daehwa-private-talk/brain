@@ -1,4 +1,4 @@
-package com.daehwa.core.enums
+package com.daehwa.user.common.enums
 
 enum class Role {
     USER, ADMIN,;
