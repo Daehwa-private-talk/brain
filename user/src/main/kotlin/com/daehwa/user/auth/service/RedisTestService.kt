@@ -1,7 +1,7 @@
 package com.daehwa.user.auth.service
 
-import com.daehwa.user.common.repository.LoginUser
-import com.daehwa.user.common.repository.LoginUserRepository
+import com.daehwa.core.jpa.LoginUser
+import com.daehwa.core.jpa.LoginUserRepository
 import org.springframework.stereotype.Service
 import kotlin.jvm.optionals.getOrNull
 
@@ -12,10 +12,10 @@ class RedisTestService(
     private val loginUserRepository: LoginUserRepository,
 ) {
     fun save() {
-        val user = LoginUser(email, "refreshtoken")
-        val user2 = LoginUser(email2, "accesstoken")
+//        val user = LoginUser(email, "refreshtoken")
+//        val user2 = LoginUser(email2, "accesstoken")
 
-        loginUserRepository.saveAll(listOf(user, user2))
+//        loginUserRepository.saveAll(listOf(user, user2))
     }
 
     fun get(): LoginUser? {

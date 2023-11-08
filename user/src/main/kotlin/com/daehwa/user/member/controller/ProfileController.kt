@@ -7,11 +7,7 @@ import com.daehwa.user.member.dto.GetMemberResponse
 import com.daehwa.user.member.facade_service.ProfileFacadeService
 import com.daehwa.user.member.service.ProfileService
 import org.springframework.security.core.annotation.AuthenticationPrincipal
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/v1/api/profiles")
@@ -21,14 +17,14 @@ class ProfileController(
 ) {
     @GetMapping
     fun getProfiles(@AuthenticationPrincipal user: AuthenticatedUser): SuccessResponse<List<GetMemberResponse>> =
-        SuccessResponse.of(profileFacadeService.getProfiles(user.id))
+        SuccessResponse.of(profileFacadeService.getProfiles(user.userId))
 
     @PostMapping
     fun createProfile(
         @AuthenticationPrincipal user: AuthenticatedUser,
         @RequestBody request: CreateProfileRequest,
     ): SuccessResponse<Unit> {
-        profileService.createProfile(user.id, request)
+        profileService.createProfile(user.userId, request)
 
         return SuccessResponse.DEFAULT
     }

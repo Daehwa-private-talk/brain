@@ -1,15 +1,16 @@
 package com.daehwa.user.auth.service
 
-import com.daehwa.core.config.TokenProperty
+import com.daehwa.core.config.DaehwaUser
+import com.daehwa.core.config.UserRepository
 import com.daehwa.core.exception.DaehwaException
 import com.daehwa.core.exception.ErrorCode
+import com.daehwa.core.jpa.LoginUser
+import com.daehwa.core.jpa.LoginUserRepository
 import com.daehwa.user.auth.dto.SignInRequest
 import com.daehwa.user.auth.dto.SignInResponse
 import com.daehwa.user.auth.dto.SignUpRequest
 import com.daehwa.user.auth.dto.TokenResponse
 import com.daehwa.user.common.config.TokenProvider
-import com.daehwa.core.config.DaehwaUser
-import com.daehwa.core.config.UserRepository
 import jakarta.transaction.Transactional
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.stereotype.Service
@@ -18,8 +19,8 @@ import java.time.LocalDateTime
 @Service
 class AuthService(
     private val userRepository: UserRepository,
+    private val loginUserRepository: LoginUserRepository,
     private val passwordEncoder: BCryptPasswordEncoder,
-    private val tokenProperty: TokenProperty,
     private val tokenProvider: TokenProvider,
 ) {
     @Transactional
@@ -50,7 +51,7 @@ class AuthService(
         validateUser(user, request.password)
 
         val refreshToken = createRefreshJwt(user)
-        val accessToken = createAccessJwt(user, refreshToken)
+        val accessToken = createAccessJwt(user.email, refreshToken)
 
         return SignInResponse(
             email = user.email,
@@ -61,19 +62,23 @@ class AuthService(
         )
     }
 
-    private fun createAccessJwt(user: DaehwaUser, refreshToken: String): String {
-        val token = tokenProvider.createAccessToken(user, refreshToken)
-        user.updateSignInAt(LocalDateTime.now())
-
-        return token
-    }
+    private fun createAccessJwt(email: String, refreshToken: String): String =
+        tokenProvider.createAccessToken(email, refreshToken)
 
     private fun createRefreshJwt(user: DaehwaUser): String {
         val refreshToken = tokenProvider.createRefreshToken()
-        user.updateRefreshToken(
+        val loginUser = LoginUser(
+            email = user.email,
+            userId = user.id,
+            name = user.name,
+            password = user.password,
+            roleName = user.role.getRoleName(),
             refreshToken = refreshToken,
-            refreshTokenExpiredAt = LocalDateTime.now().plusHours(tokenProperty.refreshTokenRenewHour),
+            signInAt = LocalDateTime.now(),
         )
+
+        loginUserRepository.save(loginUser)
+
         return refreshToken
     }
 
@@ -89,14 +94,17 @@ class AuthService(
 
     @Transactional
     fun refresh(refreshToken: String): TokenResponse {
-        val user = userRepository.findByRefreshToken(refreshToken)
+        val loginUser = loginUserRepository.findByRefreshToken(refreshToken)
+            ?: throw DaehwaException(ErrorCode.NOT_FOUND, "refresh 대상 회원이 존재하지 않습니다.")
+
+        val user = userRepository.findByEmail(loginUser.email)
             ?: throw DaehwaException(ErrorCode.NOT_FOUND, "refresh 대상 회원이 존재하지 않습니다.")
 
         val newRefreshToken = createRefreshJwt(user)
 
         return TokenResponse(
             refreshToken = newRefreshToken,
-            accessToken = createAccessJwt(user, newRefreshToken),
+            accessToken = createAccessJwt(user.email, newRefreshToken),
         )
     }
 }

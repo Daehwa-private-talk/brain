@@ -18,6 +18,7 @@ dependencies {
 
     // DB
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-data-redis")
 
     // 시큐리티
     implementation("org.springframework.boot:spring-boot-starter-security")

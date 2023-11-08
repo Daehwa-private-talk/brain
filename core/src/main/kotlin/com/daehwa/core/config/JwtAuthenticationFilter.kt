@@ -2,6 +2,8 @@ package com.daehwa.core.config
 
 import com.daehwa.core.exception.DaehwaException
 import com.daehwa.core.exception.ErrorCode
+import com.daehwa.core.jpa.LoginUser
+import com.daehwa.core.jpa.LoginUserRepository
 import com.daehwa.core.utils.CookieUtils
 import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpServletRequest
@@ -14,7 +16,7 @@ import java.time.LocalDateTime
 @Component
 class JwtAuthenticationFilter(
     private val tokenService: TokenService,
-    private val userRepository: UserRepository,
+    private val loginUserRepository: LoginUserRepository,
 ) : OncePerRequestFilter() {
     companion object {
         private const val COOKIE_KEY = "daehwa.access_token"
@@ -31,12 +33,12 @@ class JwtAuthenticationFilter(
         if (validateToken(token)) {
             val refreshToken = tokenService.getRefreshToken(token!!)
 
-            val user = userRepository.findByRefreshToken(refreshToken) ?: kotlin.run {
+            val user = loginUserRepository.findByRefreshToken(refreshToken) ?: kotlin.run {
                 expireAccessToken(request, response)
                 throw DaehwaException(ErrorCode.DUPLICATED_LOGIN, "중복 로그인 되었습니다.")
             }
 
-            validateSignInAt(user.signInAt!!)
+            validateExpireTime(user.signInAt)
             setAuthentication(user)
         }
 
@@ -44,7 +46,7 @@ class JwtAuthenticationFilter(
     }
 
     private fun validateToken(token: String?) = tokenService.isValidateToken(token)
-    private fun validateSignInAt(signInAt: LocalDateTime) {
+    private fun validateExpireTime(signInAt: LocalDateTime) {
         if (signInAt.plusHours(ACCESS_TOKEN_EXPIRE_HOUR).isBefore(LocalDateTime.now())) {
             throw DaehwaException(ErrorCode.EXPIRED, "만료된 access token 입니다.")
         }
@@ -64,7 +66,7 @@ class JwtAuthenticationFilter(
         }
     }
 
-    private fun setAuthentication(user: DaehwaUser) {
+    private fun setAuthentication(user: LoginUser) {
         val authentication = tokenService.getAuthentication(user)
         SecurityContextHolder.getContext().authentication = authentication
     }

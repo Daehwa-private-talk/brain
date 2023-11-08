@@ -2,6 +2,7 @@ package com.daehwa.core.config
 
 import com.daehwa.core.config.JasyptConfig.Companion.JASYPT_ENCRYPTOR
 import com.daehwa.core.jpa.AuthenticatedUser
+import com.daehwa.core.jpa.LoginUser
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.security.Keys
@@ -59,14 +60,15 @@ class TokenService(
 
     private fun isNotExpired(claims: Claims): Boolean = claims.expiration.after(Date())
 
-    fun getAuthentication(user: DaehwaUser): Authentication {
-        val authenticatedUser = AuthenticatedUser(
-            name = user.name,
-            password = user.password,
-            authorities = listOf(SimpleGrantedAuthority(user.role.getRoleName())),
-            id = user.id,
-            email = user.email,
-        )
+    fun getAuthentication(loginUser: LoginUser): Authentication {
+        val authenticatedUser =
+            AuthenticatedUser(
+                name = loginUser.name,
+                password = loginUser.password,
+                authorities = listOf(SimpleGrantedAuthority(loginUser.roleName)),
+                userId = loginUser.userId,
+                email = loginUser.email,
+            )
 
         return UsernamePasswordAuthenticationToken(authenticatedUser, null, authenticatedUser.authorities)
     }

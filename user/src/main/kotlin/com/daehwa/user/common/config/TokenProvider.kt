@@ -3,7 +3,6 @@ package com.daehwa.user.common.config
 import com.daehwa.core.config.JasyptConfig.Companion.JASYPT_ENCRYPTOR
 import com.daehwa.core.config.TokenProperty
 import com.daehwa.core.utils.UUIDUtils
-import com.daehwa.core.config.DaehwaUser
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
 import io.jsonwebtoken.security.Keys
@@ -25,9 +24,9 @@ class TokenProvider(
     fun createRefreshToken(): String = UUIDUtils.generate()
 
     @Transactional
-    fun createAccessToken(user: DaehwaUser, refreshToken: String): String {
+    fun createAccessToken(email: String, refreshToken: String): String {
         val nonce = jasypt.encrypt(refreshToken + "*" + LocalDateTime.now())
-        val claims = getClaims(user, nonce)
+        val claims = getClaims(email, nonce)
         val now = Date()
 
         return Jwts.builder()
@@ -38,12 +37,8 @@ class TokenProvider(
             .compact()
     }
 
-    private fun getClaims(user: DaehwaUser, nonce: String) = mapOf(
-        "name" to user.name,
-        "password" to user.password,
-        "authorities" to user.role,
-        "id" to user.id,
-        "email" to user.email,
+    private fun getClaims(email: String, nonce: String) = mapOf(
+        "email" to email,
         "nonce" to nonce,
     )
 }

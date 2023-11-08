@@ -14,10 +14,10 @@ class ProfileFacadeService(
 ) {
     @Transactional(readOnly = true)
     fun getProfiles(userId: Int): List<GetMemberResponse> {
-        val user = profileService.getProfile(userId)
-        val friendMaps = friendMapService.getFriendMaps(user)
+        val profile = profileService.getProfile(userId)
+        val friendMaps = friendMapService.getFriendMaps(profile)
         val friends = profileService.getProfiles(friendMaps.map { it.friendProfile.id })
 
-        return listOf(GetMemberResponse(user)) + friends.map { GetMemberResponse(it) }
+        return listOf(GetMemberResponse(profile)) + friends.map { GetMemberResponse(it) }
     }
 }
