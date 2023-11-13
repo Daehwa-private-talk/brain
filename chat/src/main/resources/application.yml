@@ -1,7 +1,10 @@
 server:
-  port: 9900
+  port: 0
 
 spring:
+  profiles:
+    include:
+      - secure
   application:
     name: chat
   jpa:

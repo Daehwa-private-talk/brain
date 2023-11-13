@@ -5,7 +5,7 @@ import com.daehwa.chat.model.ChatUrlUtils
 import org.springframework.messaging.simp.SimpMessageSendingOperations
 import org.springframework.stereotype.Service
 
-private const val CHAT_ROOM_URL = "/chat/room"
+private const val CHAT_ROOM_URL = "/chat/rooms/"
 
 @Service
 class ChatService(
