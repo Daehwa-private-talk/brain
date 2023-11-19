@@ -7,7 +7,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient
 import org.springframework.context.annotation.ComponentScan
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 
-@ConfigurationPropertiesScan(basePackages = ["com.daehwa.core.*"])
+@ConfigurationPropertiesScan(basePackages = ["com.daehwa.core.*", "com.daehwa.chat.*"])
 @ComponentScan(basePackages = ["com.daehwa.core.*", "com.daehwa.chat.*"])
 @EnableDiscoveryClient
 @SpringBootApplication

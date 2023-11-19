@@ -1,4 +1,4 @@
-package com.daehwa.chat.common.config
+package com.daehwa.chat.config
 
 import mu.KotlinLogging
 import org.springframework.stereotype.Component

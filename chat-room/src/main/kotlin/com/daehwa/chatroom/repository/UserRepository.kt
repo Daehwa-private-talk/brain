@@ -1,4 +1,4 @@
-package com.daehwa.chat.common.repository
+package com.daehwa.chatroom.repository
 
 import org.springframework.data.jpa.repository.JpaRepository
 

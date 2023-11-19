@@ -1,4 +1,4 @@
-package com.daehwa.core.config
+package com.daehwa.chatroom.config
 
 import mu.KotlinLogging
 import org.springframework.beans.factory.annotation.Value

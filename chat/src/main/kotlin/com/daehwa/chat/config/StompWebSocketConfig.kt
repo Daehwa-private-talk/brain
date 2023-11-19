@@ -1,4 +1,4 @@
-package com.daehwa.chat.common.config
+package com.daehwa.chat.config
 
 import com.daehwa.chat.model.ChatUrlUtils.PUBLISH_URL
 import com.daehwa.chat.model.ChatUrlUtils.SUBSCRIBE_URL
@@ -9,7 +9,7 @@ import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBr
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer
 
-const val WEB_SOCKET_END_POINT = "/v1/api/socket/chat"
+const val WEB_SOCKET_END_POINT = "/v1/api/socket"
 
 @Configuration
 @EnableWebSocketMessageBroker
@@ -18,8 +18,9 @@ class StompWebSocketConfig(
     private val allowOrigins: List<String>,
 ) : WebSocketMessageBrokerConfigurer {
     override fun registerStompEndpoints(registry: StompEndpointRegistry) {
-        registry.addEndpoint(WEB_SOCKET_END_POINT)
-            .setAllowedOrigins("*")
+        registry.setErrorHandler()
+            .addEndpoint(WEB_SOCKET_END_POINT)
+            .setAllowedOrigins(*allowOrigins.toTypedArray())
             .withSockJS()
     }
 

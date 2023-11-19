@@ -1,4 +1,4 @@
-package com.daehwa.chat.common.config
+package com.daehwa.chatroom.config
 
 import com.daehwa.core.jpa.AuthenticatedUser
 import org.springframework.data.domain.AuditorAware

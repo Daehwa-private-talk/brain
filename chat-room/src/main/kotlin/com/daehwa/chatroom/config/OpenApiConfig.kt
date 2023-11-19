@@ -1,4 +1,4 @@
-package com.daehwa.chat.common.config
+package com.daehwa.chatroom.config
 
 import io.swagger.v3.oas.models.Components
 import io.swagger.v3.oas.models.OpenAPI
@@ -22,7 +22,7 @@ class OpenApiConfig {
                 Info()
                     .title("대화 API")
                     .version("1.0.0")
-                    .description("Daehwa Chat API Description")
+                    .description("Daehwa Chat-room API Description")
             )
             .addServersItem(Server().url(""))
             .addSecurityItem(SecurityRequirement().addList(KEY))
