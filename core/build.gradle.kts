@@ -17,7 +17,6 @@ dependencies {
     compileOnly("org.springframework.boot:spring-boot-configuration-processor")
 
     // DB
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-data-redis")
 
     // 시큐리티

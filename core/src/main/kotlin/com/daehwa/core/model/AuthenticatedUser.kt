@@ -1,4 +1,4 @@
-package com.daehwa.core.jpa
+package com.daehwa.core.model
 
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.userdetails.User

@@ -66,15 +66,10 @@ subprojects {
 
 
     dependencies {
-        val springDocVersion = "2.1.0"
-
         //default settings
         implementation("org.springframework.boot:spring-boot-starter-web")
         implementation("org.jetbrains.kotlin:kotlin-reflect")
         testImplementation("org.springframework.boot:spring-boot-starter-test")
-
-        // spring doc
-        implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:$springDocVersion")
     }
 
     val springCloudVersion = "2022.0.4"

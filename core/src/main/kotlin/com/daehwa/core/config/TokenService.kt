@@ -1,8 +1,8 @@
 package com.daehwa.core.config
 
 import com.daehwa.core.config.JasyptConfig.Companion.JASYPT_ENCRYPTOR
-import com.daehwa.core.jpa.AuthenticatedUser
-import com.daehwa.core.jpa.LoginUser
+import com.daehwa.core.model.AuthenticatedUser
+import com.daehwa.core.model.LoginUser
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.security.Keys

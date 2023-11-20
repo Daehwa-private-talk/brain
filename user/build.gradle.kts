@@ -12,6 +12,8 @@ dependencies {
     val flywayVersion = "9.15.2"
     val kotlinLoggingVersion = "3.0.5"
     val jwtVersion = "0.11.5"
+    val springDocVersion = "2.1.0"
+
     implementation(project(":core"))
     testImplementation(project(":core"))
 
@@ -40,4 +42,5 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-redis")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:$springDocVersion")
 }

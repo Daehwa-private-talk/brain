@@ -10,16 +10,13 @@ import org.springframework.stereotype.Component
 @Component
 class StompHandler(private val jwtUtils: JwtUtils) : ChannelInterceptor {
     override fun preSend(message: Message<*>, channel: MessageChannel): Message<*>? {
-//        return super.preSend(message, channel)
         val accessor = StompHeaderAccessor.wrap(message)
 
         if (StompCommand.CONNECT == accessor.command) {
             val header = jwtUtils.extractJwt(accessor)
-
+            jwtUtils.validateToken(header)
         }
 
         return message
     }
-
-
 }

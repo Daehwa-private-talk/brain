@@ -1,4 +1,4 @@
-package com.daehwa.core.jpa
+package com.daehwa.core.model
 
 import org.springframework.data.repository.CrudRepository
 

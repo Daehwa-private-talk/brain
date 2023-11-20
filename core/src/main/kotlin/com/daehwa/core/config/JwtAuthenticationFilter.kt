@@ -2,8 +2,8 @@ package com.daehwa.core.config
 
 import com.daehwa.core.exception.DaehwaException
 import com.daehwa.core.exception.ErrorCode
-import com.daehwa.core.jpa.LoginUser
-import com.daehwa.core.jpa.LoginUserRepository
+import com.daehwa.core.model.LoginUser
+import com.daehwa.core.model.LoginUserRepository
 import com.daehwa.core.utils.CookieUtils
 import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpServletRequest

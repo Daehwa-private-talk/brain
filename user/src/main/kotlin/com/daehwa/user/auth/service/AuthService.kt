@@ -4,8 +4,8 @@ import com.daehwa.user.common.repository.DaehwaUser
 import com.daehwa.user.common.repository.UserRepository
 import com.daehwa.core.exception.DaehwaException
 import com.daehwa.core.exception.ErrorCode
-import com.daehwa.core.jpa.LoginUser
-import com.daehwa.core.jpa.LoginUserRepository
+import com.daehwa.core.model.LoginUser
+import com.daehwa.core.model.LoginUserRepository
 import com.daehwa.user.auth.dto.SignInRequest
 import com.daehwa.user.auth.dto.SignInResponse
 import com.daehwa.user.auth.dto.SignUpRequest

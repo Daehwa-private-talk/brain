@@ -1,6 +1,6 @@
 package com.daehwa.chatroom.config
 
-import com.daehwa.core.jpa.AuthenticatedUser
+import com.daehwa.core.model.AuthenticatedUser
 import org.springframework.data.domain.AuditorAware
 import org.springframework.security.core.context.SecurityContextHolder
 import java.util.*

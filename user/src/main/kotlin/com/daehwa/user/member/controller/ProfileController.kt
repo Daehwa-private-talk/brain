@@ -1,7 +1,7 @@
 package com.daehwa.user.member.controller
 
 import com.daehwa.core.dto.SuccessResponse
-import com.daehwa.core.jpa.AuthenticatedUser
+import com.daehwa.core.model.AuthenticatedUser
 import com.daehwa.user.member.dto.CreateProfileRequest
 import com.daehwa.user.member.dto.GetMemberResponse
 import com.daehwa.user.member.facade_service.ProfileFacadeService
