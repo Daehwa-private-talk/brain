@@ -14,8 +14,7 @@ CREATE TABLE `daehwa_user`
     `is_deleted`               TINYINT      NOT NULL,
     `created_at`               DATETIME     NOT NULL,
     `updated_at`               DATETIME     NOT NULL,
-    PRIMARY KEY (`id`),
-    UNIQUE KEY uq_refresh_token (refresh_token)
+    PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
 
 CREATE TABLE `friend_map`
