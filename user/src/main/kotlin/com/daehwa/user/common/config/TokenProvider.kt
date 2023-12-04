@@ -21,7 +21,12 @@ class TokenProvider(
 ) {
     private val signingKey = Keys.hmacShaKeyFor(tokenProperty.secretKey.toByteArray())
 
-    fun createRefreshToken(): String = UUIDUtils.generate()
+    fun createRefreshToken(): String =
+        Jwts.builder()
+            .setExpiration(Date(Date().time + tokenProperty.refreshTokenRenewHour))
+            .signWith(signingKey, SignatureAlgorithm.HS256)
+            .compact()
+
 
     @Transactional
     fun createAccessToken(email: String, refreshToken: String): String {

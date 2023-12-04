@@ -16,6 +16,6 @@ enum class ErrorCode(val responseCode: ResponseCode, val logLevel: LogLevel) {
     BAD_REQUEST(ResponseCode.BAD_REQUEST, LogLevel.DEBUG),
     GONE(ResponseCode.GONE, LogLevel.DEBUG),
     DUPLICATED_LOGIN(ResponseCode.DUPLICATED_LOGIN, LogLevel.DEBUG),
-    EXPIRED(ResponseCode.EXPIRED, LogLevel.WARN)
+    EXPIRED(ResponseCode.EXPIRED, LogLevel.ERROR)
     ;
 }

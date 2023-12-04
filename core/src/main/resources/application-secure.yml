@@ -1,6 +1,6 @@
 token:
   secret-key: ${SECRET_KEY}
-  access-token-expire-time: 7200000000000
+  access-token-expire-time: ${ACCESS_TOKEN_RENEW_HOUR}
   refresh-token-renew-hour: ${REFRESH_TOKEN_RENEW_HOUR}
 
 jasypt:

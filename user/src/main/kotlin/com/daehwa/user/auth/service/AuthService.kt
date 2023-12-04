@@ -1,5 +1,6 @@
 package com.daehwa.user.auth.service
 
+import com.daehwa.core.config.TokenService
 import com.daehwa.user.common.repository.DaehwaUser
 import com.daehwa.user.common.repository.UserRepository
 import com.daehwa.core.exception.DaehwaException
@@ -22,6 +23,7 @@ class AuthService(
     private val loginUserRepository: LoginUserRepository,
     private val passwordEncoder: BCryptPasswordEncoder,
     private val tokenProvider: TokenProvider,
+    private val tokenService: TokenService
 ) {
     @Transactional
     fun signUp(request: SignUpRequest): DaehwaUser {
@@ -94,9 +96,10 @@ class AuthService(
 
     @Transactional
     fun refresh(refreshToken: String): TokenResponse {
+        validateExpiration(refreshToken)
+
         val loginUser = loginUserRepository.findByRefreshToken(refreshToken)
             ?: throw DaehwaException(ErrorCode.NOT_FOUND, "refresh 대상 회원이 존재하지 않습니다.")
-
         val user = userRepository.findByEmail(loginUser.email)
             ?: throw DaehwaException(ErrorCode.NOT_FOUND, "refresh 대상 회원이 존재하지 않습니다.")
 
@@ -106,5 +109,13 @@ class AuthService(
             refreshToken = newRefreshToken,
             accessToken = createAccessJwt(user.email, newRefreshToken),
         )
+    }
+
+    private fun validateExpiration(refreshToken: String) {
+        if (tokenService.isValidateToken(refreshToken)) {
+            return
+        }
+
+        throw DaehwaException(ErrorCode.EXPIRED, "만료된 refresh token 입니다.")
     }
 }
