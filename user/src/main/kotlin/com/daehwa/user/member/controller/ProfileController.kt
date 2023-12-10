@@ -2,8 +2,8 @@ package com.daehwa.user.member.controller
 
 import com.daehwa.core.dto.SuccessResponse
 import com.daehwa.core.model.AuthenticatedUser
+import com.daehwa.user.member.dto.CreateFriendsRequest
 import com.daehwa.user.member.dto.CreateProfileRequest
-import com.daehwa.user.member.dto.GetMemberResponse
 import com.daehwa.user.member.facade_service.ProfileFacadeService
 import com.daehwa.user.member.service.ProfileService
 import org.springframework.security.core.annotation.AuthenticationPrincipal
@@ -15,16 +15,30 @@ class ProfileController(
     private val profileFacadeService: ProfileFacadeService,
     private val profileService: ProfileService,
 ) {
-    @GetMapping
-    fun getProfiles(@AuthenticationPrincipal user: AuthenticatedUser): SuccessResponse<List<GetMemberResponse>> =
-        SuccessResponse.of(profileFacadeService.getProfiles(user.userId))
+    @GetMapping("/me")
+    fun getMyProfile(@AuthenticationPrincipal user: AuthenticatedUser) =
+        SuccessResponse.of(profileFacadeService.getMyProfile(user.email))
 
-    @PostMapping
-    fun createProfile(
+    @GetMapping("/friends")
+    fun getFriends(@AuthenticationPrincipal user: AuthenticatedUser) =
+        SuccessResponse.of(profileFacadeService.getProfiles(user.email))
+
+    @PostMapping("/me")
+    fun createMyProfile(
         @AuthenticationPrincipal user: AuthenticatedUser,
         @RequestBody request: CreateProfileRequest,
     ): SuccessResponse<Unit> {
-        profileService.createProfile(user.userId, request)
+        profileService.createProfile(user.email, request)
+
+        return SuccessResponse.DEFAULT
+    }
+
+    @PostMapping("/friends")
+    fun createFriends(
+        @AuthenticationPrincipal user: AuthenticatedUser,
+        @RequestBody request: CreateFriendsRequest,
+    ): SuccessResponse<Unit> {
+        profileFacadeService.createFriends(user.email, request)
 
         return SuccessResponse.DEFAULT
     }

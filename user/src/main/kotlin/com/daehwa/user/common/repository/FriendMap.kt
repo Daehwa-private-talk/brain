@@ -8,7 +8,7 @@ class FriendMap(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int = 0,
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_profile_id")
     val userProfile: Profile,
     @ManyToOne(fetch = FetchType.EAGER)
