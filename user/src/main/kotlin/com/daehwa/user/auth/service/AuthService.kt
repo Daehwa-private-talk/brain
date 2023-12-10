@@ -23,11 +23,11 @@ class AuthService(
     private val loginUserRepository: LoginUserRepository,
     private val passwordEncoder: BCryptPasswordEncoder,
     private val tokenProvider: TokenProvider,
-    private val tokenService: TokenService
+    private val tokenService: TokenService,
 ) {
     @Transactional
     fun signUp(request: SignUpRequest): DaehwaUser {
-        val (email, password, name) = request
+        val (email, password, name, birthDate) = request
         validateEmail(email)
 
         return userRepository.save(
@@ -35,6 +35,7 @@ class AuthService(
                 email = email,
                 password = passwordEncoder.encode(password),
                 name = name,
+                birthDate = birthDate,
             ),
         )
     }

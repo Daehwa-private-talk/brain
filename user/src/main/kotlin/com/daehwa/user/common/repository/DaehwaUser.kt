@@ -4,6 +4,7 @@ import com.daehwa.user.common.enums.Role
 import com.daehwa.user.common.repository.base_entity.DateBaseEntity
 import jakarta.persistence.*
 import org.hibernate.annotations.Where
+import java.time.LocalDate
 
 @Entity
 @Where(clause = "is_deleted = false")
@@ -14,6 +15,7 @@ class DaehwaUser(
     val email: String,
     val password: String,
     val name: String,
+    val birthDate: LocalDate,
     @Enumerated(EnumType.STRING)
     val role: Role = Role.USER,
     @Column(name = "is_enabled", columnDefinition = "TINYINT")
