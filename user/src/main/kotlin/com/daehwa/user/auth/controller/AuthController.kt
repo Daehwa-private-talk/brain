@@ -1,12 +1,14 @@
 package com.daehwa.user.auth.controller
 
+import com.daehwa.core.dto.SuccessResponse
+import com.daehwa.core.model.AuthenticatedUser
 import com.daehwa.user.auth.dto.SignInRequest
 import com.daehwa.user.auth.dto.SignInResponse
 import com.daehwa.user.auth.dto.SignUpRequest
 import com.daehwa.user.auth.dto.TokenResponse
-import com.daehwa.core.dto.SuccessResponse
 import com.daehwa.user.auth.service.AuthService
 import jakarta.validation.Valid
+import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -17,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/v1/api/auth")
 class AuthController(
-    private val authService: AuthService
+    private val authService: AuthService,
 ) {
     @PostMapping("/sign-up")
     fun signUp(@RequestBody @Valid request: SignUpRequest): SuccessResponse<Unit> {
@@ -33,6 +35,9 @@ class AuthController(
     fun refresh(@RequestParam refreshToken: String): SuccessResponse<TokenResponse> =
         SuccessResponse.of(authService.refresh(refreshToken))
 
+    @GetMapping("/me")
+    fun getLoginUser(@AuthenticationPrincipal user: AuthenticatedUser): SuccessResponse<AuthenticatedUser> =
+        SuccessResponse.of(user)
 
     @GetMapping("/test")
     fun getUser(): SuccessResponse<String> {
