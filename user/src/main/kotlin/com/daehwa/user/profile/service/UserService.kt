@@ -1,4 +1,4 @@
-package com.daehwa.user.member.service
+package com.daehwa.user.profile.service
 
 import com.daehwa.core.exception.DaehwaException
 import com.daehwa.core.exception.ErrorCode

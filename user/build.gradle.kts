@@ -22,6 +22,8 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("io.github.microutils:kotlin-logging:$kotlinLoggingVersion")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:$springDocVersion")
 
     // spring cloud
     implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
@@ -41,6 +43,6 @@ dependencies {
     testImplementation("org.flywaydb:flyway-mysql:$flywayVersion")
     implementation("org.springframework.boot:spring-boot-starter-data-redis")
 
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:$springDocVersion")
+    // aws
+    implementation("org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE")
 }

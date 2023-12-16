@@ -5,6 +5,7 @@ spring:
   profiles:
     include:
       - secure
+      - aws
   application:
     name: user
   jpa:

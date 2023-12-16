@@ -1,0 +1,10 @@
+cloud:
+  aws:
+    credentials:
+      access-key: ${ACCESS_KEY}
+      secret-key: ${SECRET_KEY}
+    s3:
+      bucket: daehwa-profile
+      folder: user/images
+    region:
+      static: ap-northeast-2

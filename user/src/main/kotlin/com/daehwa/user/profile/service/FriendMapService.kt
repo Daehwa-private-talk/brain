@@ -1,4 +1,4 @@
-package com.daehwa.user.member.service
+package com.daehwa.user.profile.service
 
 import com.daehwa.user.common.repository.FriendMap
 import com.daehwa.user.common.repository.FriendMapRepository

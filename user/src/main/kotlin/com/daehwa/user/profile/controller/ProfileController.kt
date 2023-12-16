@@ -1,11 +1,11 @@
-package com.daehwa.user.member.controller
+package com.daehwa.user.profile.controller
 
 import com.daehwa.core.dto.SuccessResponse
 import com.daehwa.core.model.AuthenticatedUser
-import com.daehwa.user.member.dto.CreateFriendsRequest
-import com.daehwa.user.member.dto.CreateProfileRequest
-import com.daehwa.user.member.facade_service.ProfileFacadeService
-import com.daehwa.user.member.service.ProfileService
+import com.daehwa.user.profile.dto.CreateFriendsRequest
+import com.daehwa.user.profile.dto.CreateProfileRequest
+import com.daehwa.user.profile.facade_service.ProfileFacadeService
+import com.daehwa.user.profile.service.ProfileService
 import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.web.bind.annotation.*
 

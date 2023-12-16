@@ -1,9 +1,9 @@
-package com.daehwa.user.member.dto
+package com.daehwa.user.profile.dto
 
 import com.daehwa.user.common.repository.Profile
 import java.time.LocalDate
 
-data class GetMemberResponse(
+data class GetProfileResponse(
     val id: Int,
     val image: String,
     val nickname: String?,
