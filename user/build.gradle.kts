@@ -1,3 +1,13 @@
+tasks {
+    bootJar {
+        enabled = false
+    }
+
+//    jar {
+//        enabled = false
+//    }
+}
+
 dependencies {
     val flywayVersion = "9.15.2"
     val kotlinLoggingVersion = "3.0.5"
