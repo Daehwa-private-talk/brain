@@ -1,11 +1,13 @@
+import org.jetbrains.kotlin.cli.jvm.main
+
 tasks {
     bootJar {
-        enabled = false
+        enabled = true
     }
 
-//    jar {
-//        enabled = false
-//    }
+    jar {
+        enabled = false
+    }
 }
 
 dependencies {
