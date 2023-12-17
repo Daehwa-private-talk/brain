@@ -10,4 +10,5 @@ class S3BucketProperty {
     var folder: String = ""
 
     fun getS3Destination() = "$bucket/$folder"
+    fun getKey(fileName: String) = "$folder/$fileName"
 }

@@ -5,12 +5,18 @@ import java.time.LocalDate
 
 data class GetProfileResponse(
     val id: Int,
-    val image: String,
-    val nickname: String?,
+    val image: String?,
+    val nickname: String,
     val statusMessage: String?,
     val birthDate: LocalDate?,
+    val emoji: String?,
 ) {
     constructor(profile: Profile) : this(
-        profile.id, "not yet prepared", profile.nickname, profile.statusMessage, profile.user.birthDate,
+        id = profile.id,
+        image = profile.imageUrl,
+        nickname = profile.getProfileName(),
+        statusMessage = profile.statusMessage,
+        birthDate = profile.getBirthDay(),
+        emoji = profile.emoji
     )
 }
