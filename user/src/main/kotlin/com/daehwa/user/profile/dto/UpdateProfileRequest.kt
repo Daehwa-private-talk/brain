@@ -1,6 +1,6 @@
 package com.daehwa.user.profile.dto
 
-data class CreateProfileRequest(
+data class UpdateProfileRequest (
     val nickname: String?,
     val statusMessage: String?,
     val emoji: String?,

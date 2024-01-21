@@ -49,7 +49,7 @@ class AuthService(
     @Transactional
     fun signIn(request: SignInRequest): SignInResponse {
         val user = userRepository.findByEmail(request.email)
-            ?: throw DaehwaException(ErrorCode.NOT_FOUND)
+            ?: throw DaehwaException(ErrorCode.NOT_FOUND, "회원이 존재하지 않습니다 email: ${request.email}")
 
         validateUser(user, request.password)
 

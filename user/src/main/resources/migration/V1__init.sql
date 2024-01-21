@@ -30,12 +30,15 @@ CREATE TABLE `friend_map`
 
 CREATE TABLE `profile`
 (
-    `id`             INT      NOT NULL AUTO_INCREMENT,
-    `nickname`       VARCHAR(50) NULL,
-    `image`          VARCHAR(255) NULL,
-    `status_message` VARCHAR(50) NULL,
-    `user_id`        INT      NOT NULL,
-    `created_at`     DATETIME NOT NULL,
-    `updated_at`     DATETIME NOT NULL,
+    `id`              INT          NOT NULL AUTO_INCREMENT,
+    `email`           VARCHAR(255) NOT NULL,
+    `nickname`        VARCHAR(50) NULL,
+    `image_url`       VARCHAR(500) NULL,
+    `image_file_name` VARCHAR(500) NULL,
+    `emoji`           VARCHAR(50) NULL,
+    `status_message`  VARCHAR(50) NULL,
+    `user_id`         INT          NOT NULL,
+    `created_at`      DATETIME     NOT NULL,
+    `updated_at`      DATETIME     NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;

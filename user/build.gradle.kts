@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.cli.jvm.main
+
 tasks {
     bootJar {
         enabled = true

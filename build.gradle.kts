@@ -17,6 +17,12 @@ java {
     sourceCompatibility = JavaVersion.VERSION_17
 }
 
+tasks {
+    bootJar {
+        enabled = false
+    }
+}
+
 allprojects {
     group = "com.daehwa"
     version = "0.0.1-SNAPSHOT"
